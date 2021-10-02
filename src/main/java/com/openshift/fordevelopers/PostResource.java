@@ -9,6 +9,8 @@ import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 
 @Path("/posts")
@@ -30,6 +32,11 @@ public class PostResource {
     @POST
     @Transactional
     public Response add(Post post) {
+        try {
+            post.setHostname(InetAddress.getLocalHost().getHostName());
+        } catch (UnknownHostException e) {
+            LOGGER.error("Error:", e);
+        }
         LOGGER.infof("Persisting data: %s", gson.toJson(post));
         post.persist();
         return Response.ok(Post.listAll()).build();
