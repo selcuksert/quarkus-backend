@@ -5,6 +5,7 @@ import io.quarkus.mongodb.panache.PanacheMongoEntity;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 
 import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 @RegisterForReflection
@@ -24,11 +25,11 @@ public class Post extends PanacheMongoEntity {
     }
 
     public String getTitle() {
-        return new StringBuilder(title).append(" [").append(System.getenv("HOSTNAME")).append("]").toString();
+        return title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = title.toUpperCase(Locale.ROOT);
     }
 
     public String getContent() {
