@@ -17,7 +17,6 @@ public class Post extends PanacheEntity {
 
     public Post() {
     }
-
     public Post(String title, String content) {
         this.title = title;
         this.content = content;
@@ -27,6 +26,14 @@ public class Post extends PanacheEntity {
             this.hostname = "";
         }
         this.timestamp = new Date().getTime();
+    }
+
+    public String getHostname() {
+        return hostname;
+    }
+
+    public void setHostname(String hostname) {
+        this.hostname = hostname;
     }
 
     public String getTitle() {
