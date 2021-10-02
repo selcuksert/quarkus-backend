@@ -23,14 +23,6 @@ public class Post extends PanacheEntity {
         this.timestamp = new Date().getTime();
     }
 
-    public String getHostname() {
-        return hostname;
-    }
-
-    public void setHostname(String hostname) {
-        this.hostname = hostname;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -45,6 +37,14 @@ public class Post extends PanacheEntity {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getHostname() {
+        return hostname;
+    }
+
+    public void setHostname(String hostname) {
+        this.hostname = hostname;
     }
 
     public Long getTimestamp() {
@@ -63,11 +63,11 @@ public class Post extends PanacheEntity {
         Post other = (Post) obj;
 
         return Objects.equals(this.title, other.title) && Objects.equals(this.content, other.content)
-                && Objects.equals(this.timestamp, other.timestamp) && Objects.equals(this.hostname, other.hostname);
+                && Objects.equals(this.hostname, other.hostname) && Objects.equals(this.timestamp, other.timestamp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.title, this.content, this.timestamp, this.hostname);
+        return Objects.hash(this.title, this.content, this.hostname, this.timestamp);
     }
 }

@@ -30,7 +30,7 @@ public class PostResource {
     @POST
     @Transactional
     public Response add(Post post) {
-        LOGGER.infof("Persisting post data: %s", gson.toJson(post));
+        LOGGER.infof("Persisting data: %s", gson.toJson(post));
         post.persist();
         return Response.ok(Post.listAll()).build();
     }
