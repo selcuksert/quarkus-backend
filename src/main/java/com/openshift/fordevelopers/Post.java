@@ -1,11 +1,11 @@
 package com.openshift.fordevelopers;
 
-import java.util.Date;
-import java.util.Objects;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.persistence.Entity;
-
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Objects;
 
 @Entity
 public class Post extends PanacheEntity {
@@ -13,8 +13,7 @@ public class Post extends PanacheEntity {
     private String content;
     private long timestamp;
 
-    public Post() {
-    }
+    public Post() {}
 
     public Post(String title, String content) {
         this.title = title;
@@ -26,20 +25,20 @@ public class Post extends PanacheEntity {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title.toUpperCase(Locale.ROOT);
+    }
+
     public String getContent() {
         return content;
     }
 
-    public Long getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Long getTimestamp() {
+        return timestamp;
     }
 
     public void setTimestamp(long timestamp) {
