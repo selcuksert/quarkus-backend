@@ -4,7 +4,6 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.persistence.Entity;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Objects;
 
 @Entity
@@ -13,10 +12,11 @@ public class Post extends PanacheEntity {
     private String content;
     private long timestamp;
 
-    public Post() {}
+    public Post() {
+    }
 
     public Post(String title, String content) {
-        this.title = title;
+        this.title = new StringBuilder(title).append(" [").append(System.getenv("HOSTNAME")).append("]").toString();
         this.content = content;
         this.timestamp = new Date().getTime();
     }
@@ -26,7 +26,7 @@ public class Post extends PanacheEntity {
     }
 
     public void setTitle(String title) {
-        this.title = title.toUpperCase(Locale.getDefault());
+        this.title = title;
     }
 
     public String getContent() {
