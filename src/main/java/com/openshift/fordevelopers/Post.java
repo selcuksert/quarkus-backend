@@ -3,8 +3,6 @@ package com.openshift.fordevelopers;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.persistence.Entity;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.Objects;
 
@@ -17,15 +15,11 @@ public class Post extends PanacheEntity {
 
     public Post() {
     }
+
     public Post(String title, String content) {
         this.title = title;
         this.content = content;
-        try {
-            this.hostname = InetAddress.getLocalHost().getHostName();
-        } catch (UnknownHostException e) {
-            this.hostname = "No hostname";
-            e.printStackTrace();
-        }
+        this.hostname = System.getenv("HOSTNAME");
         this.timestamp = new Date().getTime();
     }
 
