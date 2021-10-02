@@ -24,6 +24,7 @@ public class Post extends PanacheEntity {
             this.hostname = InetAddress.getLocalHost().getHostName();
         } catch (UnknownHostException e) {
             this.hostname = "";
+            e.printStackTrace();
         }
         this.timestamp = new Date().getTime();
     }
