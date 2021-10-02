@@ -26,7 +26,7 @@ public class Post extends PanacheEntity {
     }
 
     public void setTitle(String title) {
-        this.title = title.toUpperCase(Locale.ROOT);
+        this.title = title.toUpperCase(Locale.getDefault());
     }
 
     public String getContent() {
