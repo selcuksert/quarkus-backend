@@ -16,7 +16,7 @@ public class Post extends PanacheEntity {
     }
 
     public Post(String title, String content) {
-        this.title = new StringBuilder(title).append(" [").append(System.getenv("HOSTNAME")).append("]").toString();
+        this.title = new StringBuilder(title).append(" (").append(System.getenv("HOSTNAME")).append(")").toString();
         this.content = content;
         this.timestamp = new Date().getTime();
     }
