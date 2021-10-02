@@ -23,7 +23,7 @@ public class Post extends PanacheEntity {
         try {
             this.hostname = InetAddress.getLocalHost().getHostName();
         } catch (UnknownHostException e) {
-            this.hostname = "";
+            this.hostname = "No hostname";
             e.printStackTrace();
         }
         this.timestamp = new Date().getTime();
@@ -74,6 +74,6 @@ public class Post extends PanacheEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.title, this.content, this.timestamp);
+        return Objects.hash(this.title, this.content, this.timestamp, this.hostname);
     }
 }
